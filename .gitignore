@@ -10,3 +10,5 @@ sqlite_modern_cpp.pc
 
 tests/*
 !tests/*.cc
+cmake-build-debug
+.idea

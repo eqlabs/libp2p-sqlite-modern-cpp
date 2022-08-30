@@ -1,6 +1,11 @@
 @PACKAGE_INIT@
 
-find_package(@SQLITE_PACKAGE_NAME@ CONFIG REQUIRED)
+if("@PACKAGE_MANAGER@" STREQUAL "Conan")
+    list(APPEND CMAKE_MODULE_PATH @CMAKE_MODULE_PATH@)
+    find_package(SQLite3 MODULE REQUIRED)
+else()
+    find_package(sqlite3 CONFIG REQUIRED)
+endif()
 
 include("${CMAKE_CURRENT_LIST_DIR}/@TARGETS_EXPORT_NAME@.cmake")
 check_required_components("@PROJECT_NAME@")

@@ -20,7 +20,7 @@ target_include_directories(
   $<BUILD_INTERFACE:"${CMAKE_CURRENT_SOURCE_DIR}/hdr">
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDE_DIR}>
 )
-target_link_libraries(${PROJECT_NAME} INTERFACE ${SQLITE_LIB})
+target_link_libraries(${PROJECT_NAME} INTERFACE ${SQLITE_TARGET_NAME})
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
 include(GNUInstallDirs)

@@ -3,7 +3,7 @@
 if("@PACKAGE_MANAGER@" STREQUAL "Conan")
     list(APPEND CMAKE_MODULE_PATH @CMAKE_MODULE_PATH@)
     find_package(SQLite3 MODULE REQUIRED)
-    include_directories("${SQLite3_DIRS}")
+    include_directories("${SQLite_INCLUDE_DIRS}")
 else()
     find_package(sqlite3 CONFIG REQUIRED)
 endif()

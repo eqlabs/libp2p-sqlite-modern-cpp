@@ -5,20 +5,14 @@
 
 cmake_minimum_required(VERSION 3.12)
 
-include("cmake/HunterGate.cmake")
-HunterGate(
-  URL "https://github.com/cpp-pm/hunter/archive/v0.23.216.tar.gz"
-  SHA1 "a492a1879bee60c29f7af17ef56b45f0d7766241"
-  LOCAL
-)
+include("${CMAKE_CURRENT_LIST_DIR}/cmake/3rdparty_utils.cmake")
 
 project("SQLiteModernCpp"
   LANGUAGES CXX
   VERSION 3.2.1
   )
 
-hunter_add_package(sqlite3)
-find_package(sqlite3 CONFIG REQUIRED)
+add_3rdparty(sqlite3)
 
 add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(
@@ -26,7 +20,7 @@ target_include_directories(
   $<BUILD_INTERFACE:"${CMAKE_CURRENT_SOURCE_DIR}/hdr">
   $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDE_DIR}>
 )
-target_link_libraries(${PROJECT_NAME} INTERFACE sqlite3::sqlite3)
+target_link_libraries(${PROJECT_NAME} INTERFACE ${SQLITE_TARGET_NAME})
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_17)
 
 include(GNUInstallDirs)

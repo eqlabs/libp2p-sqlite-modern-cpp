@@ -6,6 +6,7 @@
 cmake_minimum_required(VERSION 3.12)
 
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/3rdparty_utils.cmake")
+include("${CMAKE_CURRENT_LIST_DIR}/cmake/sanitizers.cmake")
 
 project("SQLiteModernCpp"
   LANGUAGES CXX

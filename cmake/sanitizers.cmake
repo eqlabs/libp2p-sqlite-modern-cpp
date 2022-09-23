@@ -13,8 +13,6 @@ set(TSAN ${SAN_OPTION})
 check_san_option("UBSAN")
 set(UBSAN ${SAN_OPTION})
 
-message(STATUS "sqlite: SAN=${LSAN}")
-
 if(ASAN)
   print("Address Sanitizer is enabled")
   include(${CMAKE_CURRENT_LIST_DIR}/toolchain/flags/sanitize_address.cmake)

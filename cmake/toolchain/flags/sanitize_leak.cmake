@@ -1,21 +1,6 @@
-# Copyright (c) 2014, Ruslan Baratov
-# All rights reserved.
-
-if (DEFINED POLLY_FLAGS_SANITIZE_LEAK_CMAKE_)
-    return()
-else ()
-    set(POLLY_FLAGS_SANITIZE_LEAK_CMAKE_ 1)
-endif ()
-
-set(FLAGS
+list(APPEND SAN_FLAGS
     -fsanitize=leak
-    -g
     )
-
-foreach(FLAG IN LISTS FLAGS)
-    add_cache_flag(CMAKE_CXX_FLAGS ${FLAG})
-    add_cache_flag(CMAKE_C_FLAGS ${FLAG})
-endforeach()
 
 set(ENV{LSAN_OPTIONS} detect_leaks=1)
 

@@ -30,8 +30,10 @@ function(add_conan_package PACKAGE_NAME PACKAGE_VERSION)
         GENERATORS cmake_find_package
         OPTIONS ${MY_INSTALL_CONFIG_OPTIONS})
 
-    string(REPLACE ";" " " SAN_FLAGS_STRING "${SAN_FLAGS}")
-    set(CONAN_ENV "CXXFLAGS=${SAN_FLAGS_STRING}; CFLAGS=${SAN_FLAGS_STRING}; LDFLAGS=${SAN_FLAGS_STRING}")
+    if (SAN)
+      string(REPLACE ";" " " SAN_FLAGS_STRING "${SAN_FLAGS}")
+      set(CONAN_ENV "CXXFLAGS=${SAN_FLAGS_STRING}; CFLAGS=${SAN_FLAGS_STRING}; LDFLAGS=${SAN_FLAGS_STRING}")
+    endif()
 
     conan_cmake_autodetect(CONAN_SETTINGS)
     conan_cmake_install(PATH_OR_REFERENCE .

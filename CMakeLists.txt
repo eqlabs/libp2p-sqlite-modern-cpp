@@ -6,6 +6,17 @@
 cmake_minimum_required(VERSION 3.12)
 
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/3rdparty_utils.cmake")
+
+# sanitizers will be enabled only for libp2p, and will be disabled for dependencies
+option(ASAN "Enable address sanitizer" OFF)
+option(LSAN "Enable leak sanitizer" OFF)
+option(MSAN "Enable memory sanitizer" OFF)
+option(TSAN "Enable thread sanitizer" OFF)
+option(UBSAN "Enable UB sanitizer" OFF)
+
+# One flag to set a given sanitizer - will be passed to dependencies
+option(SAN "Enable sanitizer (ASAN/LSAN/MSAN/TSAN/UBSAN)" OFF)
+
 include("${CMAKE_CURRENT_LIST_DIR}/cmake/sanitizers.cmake")
 
 project("SQLiteModernCpp"
